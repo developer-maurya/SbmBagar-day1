@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU6OAaFWDStJzQHTLjsTWM8kfJx2JMniIcAg&amp;s" type="image/x-icon">
+    <title>SbmBagar</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/YOUR_KIT.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-sm">
+    <h2 id="formTitle" class="text-2xl font-bold text-center text-blue-600 mb-6">Login</h2>
+
+    <!-- Form -->
+    <form id="authForm" class="space-y-4" onsubmit="return false;">
+      <input
+        id="nameField"
+        type="text"
+        placeholder="Full Name"
+        class="w-full px-4 py-2 border rounded hidden"
+      />
+      <input
+        id="emailField"
+        type="email"
+        placeholder="Email"
+        class="w-full px-4 py-2 border rounded"
+        required
+      />
+      <input
+        id="passwordField"
+        type="password"
+        placeholder="Password"
+        class="w-full px-4 py-2 border rounded"
+        required
+      />
+      <button
+        type="submit"
+        class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+      >
+        <span id="submitBtnText">Login</span>
+      </button>
+    </form>
+
+    <!-- Toggle -->
+    <p class="text-sm text-center text-gray-600 mt-4">
+      <span id="toggleText">Don’t have an account?</span>
+      <button onclick="toggleForm()" class="text-blue-600 font-medium hover:underline" id="toggleBtn">
+        Sign Up
+      </button>
+    </p>
+
+    <!-- Cancel -->
+    <button onclick="cancelForm()" class="w-full mt-4 text-red-500 text-sm hover:underline">
+    
+    </button>
+  </div>
+
+  <!-- Script -->
+  <script>
+    let isLogin = true;
+
+    function toggleForm() {
+      isLogin = !isLogin;
+
+      document.getElementById("formTitle").textContent = isLogin ? "Login" : "Sign Up";
+      document.getElementById("nameField").classList.toggle("hidden", isLogin);
+      document.getElementById("submitBtnText").textContent = isLogin ? "Login" : "Sign Up";
+      document.getElementById("toggleText").textContent = isLogin
+        ? "Don’t have an account?"
+        : "Already have an account?";
+      document.getElementById("toggleBtn").textContent = isLogin ? "Sign Up" : "Login";
+    }
+
+    function cancelForm() {
+      // Reset to login form and clear fields
+      if (!isLogin) toggleForm();
+
+      document.getElementById("authForm").reset();
+    }
+  </script>
+</body>
+</html>
